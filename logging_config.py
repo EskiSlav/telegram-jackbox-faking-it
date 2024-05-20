@@ -7,7 +7,7 @@ LOGLEVEL = config('LOGLEVEL', default='INFO')
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'formatters': {
         'detailed': {
             'class': 'logging.Formatter',

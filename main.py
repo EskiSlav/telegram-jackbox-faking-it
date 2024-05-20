@@ -170,7 +170,7 @@ async def continue_game(callback: CallbackQuery) -> None:
 
     await callback.message.edit_text(callback.message.text, reply_markup=game_stage1_q3_builder.as_markup())
     
-@dp.callback_query(ActionCallback.filter(F.action == 'continuegame3'))
+@dp.callback_query(ActionCallback.filter(F.action == 'endgame'))
 async def continue_game(callback: CallbackQuery) -> None:
     if not db.get_game_admin(callback.message.chat.id) == callback.from_user.id:
         await callback.answer('Ви не адміністратор цієї гри')
@@ -220,6 +220,10 @@ async def main() -> None:
     # And the run events dispatching
     await dp.start_polling(bot)
 
+
+# def lambda_handler(event, context):
+#     """AWS Lambda handler."""
+#     asyncio.run(main())
 
 if __name__ == "__main__":
     asyncio.run(main())
