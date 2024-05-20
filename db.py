@@ -1,8 +1,13 @@
 import sqlite3
-
-from models import Question, User
+import logging
+import logging.config
 from typing import List
 
+from models import Question, User
+from logging_config import LOGGING
+
+logging.config.dictConfig(LOGGING)
+logger = logging.getLogger(__name__)
 class Database():
     def __init__(self, db_path='db.db') -> None:
         self.db_path = db_path

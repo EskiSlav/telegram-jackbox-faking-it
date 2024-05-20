@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import logging.config
 import sys
 from os import getenv
 from random import choice
@@ -15,6 +16,10 @@ from aiogram import F
 from models import ActionCallback
 from keyboards import join_game_builder, game_stage1_q1_builder, game_stage1_q2_builder, game_stage1_q3_builder
 from db import Database
+from logging_config import LOGGING
+
+logging.config.dictConfig(LOGGING)
+logger = logging.getLogger(__name__)
 
 # Bot token can be obtained via https://t.me/BotFather
 TOKEN = getenv("BOT_TOKEN")
@@ -217,5 +222,4 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
